@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/partials/page-success.css" />
+    <link rel="stylesheet" href="styles/partials/header.css" />
+    <link rel="stylesheet" href="styles/partials/forms.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <script>
+      window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const subject = urlParams.get('subject');
+        const weekday = urlParams.get('weekday');
+        const time = urlParams.get('time');
+
+        const display = document.querySelector('#sec');
+        let counter = 3;
+        const timer = setInterval(() => {
+          counter--;
+          if (counter <= 0) {
+            clearInterval(timer);
+            window.location.href = `/study?subject=${subject}&weekday=${weekday}&time=${time}`;
+          }
+          display.textContent = `Proffy cadastrado com sucesso! Você será redirecionado em ${counter}...`;
+        }, 1000);
+      };
+    </script>
+  </head>
+  <body id="page-success">
+    <div id="container">
+      <header class="page-header">
+        <div class="top-bar-container">
+          <a href="/">
+            <img src="images/icons/back.svg" alt="logo" />
+          </a>
+          <img src="images/logo.svg" alt="logo" />
+        </div>
+
+        <div class="header-content">
+          <strong id="sec"
+            >Proffy cadastrado com sucesso! Você será redirecionado em
+            3...</strong
+          >
+          <small>
+            Não foi redirecionado? Clique
+            <a href="/study">aqui</a>
+          </small>
+        </div>
+      </header>
+      <main></main>
+    </div>
+  </body>
+</html>

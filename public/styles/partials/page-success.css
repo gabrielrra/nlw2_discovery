@@ -1,0 +1,53 @@
+#page-success #container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#page-success main {
+  margin: 3.2rem auto;
+  width: 90%;
+}
+
+#page-success .header-content strong {
+  font: 700 3.6rem Archivo;
+  color: var(--color-title-in-primary);
+  line-height: 4.2rem;
+}
+
+#page-success .header-content strong {
+  font: 700 2.4rem Archivo;
+  display: block;
+  text-align: center;
+}
+
+@media (min-width: 700px) {
+  #page-success #container {
+    max-width: 100vw;
+  }
+
+  #page-success main {
+    margin: 0 auto;
+    padding: 32px 0;
+    max-width: 740px;
+  }
+
+  #page-success .header-content strong {
+    display: block;
+    text-align: center;
+    max-width: 100vw;
+  }
+
+  #page-success .header-content strong {
+    display: block;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  #page-success .header-content small {
+    font: 400 1.4rem Archivo;
+    color: var(--color-title-in-primary);
+    display: block;
+    text-align: center;
+    max-width: 100%;
+  }
+}
