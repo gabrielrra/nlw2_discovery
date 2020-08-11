@@ -1,11 +1,17 @@
-import { deleteSchedule } from './removeField';
-document.querySelector('#add-time').addEventListener('click', cloneAddTime);
+document
+  .querySelector('#add-time')
+  .addEventListener('click', cloneScheduleItem);
 
-function cloneAddTime(event) {
+function cloneScheduleItem(event) {
   const scheduleItems = document.querySelectorAll('.schedule-item');
   const lastScheduleItem = scheduleItems[scheduleItems.length - 1];
 
   const newScheduleItem = lastScheduleItem.cloneNode(true);
+
+  newScheduleItem.querySelector('button') &&
+    newScheduleItem.querySelector('button').remove();
+  createNewButton(newScheduleItem);
+
   const newInputs = newScheduleItem.querySelectorAll('input');
   let ok = true;
   newInputs.forEach((e) => {
@@ -20,21 +26,28 @@ function cloneAddTime(event) {
     alert('Preencha os dois horários antes de criar um novo');
     return;
   }
-  if (lastScheduleItem.querySelector('button')) {
+  lastScheduleItem.querySelector('button') &&
     lastScheduleItem.querySelector('button').remove();
-  }
-  if (!newScheduleItem.querySelector('button')) {
-    createNewButton(newScheduleItem);
-  }
   const previousInputs = lastScheduleItem.querySelectorAll('input');
   previousInputs.forEach((input) => input.setAttribute('readonly', true));
   lastScheduleItem.querySelector('select').setAttribute('disabled', true);
   return document.querySelector('#schedule-items').append(newScheduleItem);
 }
 
-// function deleteSchedule(event) {
-//   document.querySelector('#delete-button').parentElement.remove();
-// }
+function deleteSchedule(event) {
+  document.querySelector('#delete-button').parentElement.remove();
+  const scheduleItems = document.querySelectorAll('.schedule-item');
+  const lastScheduleItem = scheduleItems[scheduleItems.length - 1];
+
+  const previousInputs = lastScheduleItem.querySelectorAll('input');
+
+  previousInputs.forEach((input) => input.removeAttribute('readonly'));
+  lastScheduleItem.querySelector('select').removeAttribute('disabled');
+
+  if (scheduleItems.length > 1) {
+    createNewButton(lastScheduleItem);
+  }
+}
 
 function createNewButton(scheduleItem) {
   var newButton = document.createElement('button');
