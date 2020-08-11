@@ -108,10 +108,30 @@
 
   .schedule-item {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 0.5fr;
     column-gap: 2rem;
+    align-items: center;
   }
 
+  .schedule-item button {
+    width: 40px;
+    height: 40px;
+    border-radius: calc(40px / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: none;
+    outline: 0;
+  }
+  .schedule-item button img {
+    width: 40px;
+    transition: 0.2s;
+  }
+  .schedule-item button :hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
   #page-give-classes #schedule-items .input-block {
     margin-top: 0;
   }
